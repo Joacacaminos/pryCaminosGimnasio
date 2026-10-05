@@ -36,9 +36,9 @@
             this.cboPlan = new System.Windows.Forms.ComboBox();
             this.cboTurno = new System.Windows.Forms.ComboBox();
             this.lblPlan = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTurno = new System.Windows.Forms.Label();
             this.txtBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMeses = new System.Windows.Forms.Label();
             this.chkCasillero = new System.Windows.Forms.CheckBox();
             this.rbtEfectivo = new System.Windows.Forms.RadioButton();
             this.rbtTarjeta = new System.Windows.Forms.RadioButton();
@@ -128,14 +128,14 @@
             this.lblPlan.TabIndex = 7;
             this.lblPlan.Text = "Plan:";
             // 
-            // label2
+            // lblTurno
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Turno:";
+            this.lblTurno.AutoSize = true;
+            this.lblTurno.Location = new System.Drawing.Point(171, 88);
+            this.lblTurno.Name = "lblTurno";
+            this.lblTurno.Size = new System.Drawing.Size(38, 13);
+            this.lblTurno.TabIndex = 8;
+            this.lblTurno.Text = "Turno:";
             // 
             // txtBox
             // 
@@ -145,14 +145,14 @@
             this.txtBox.Size = new System.Drawing.Size(44, 20);
             this.txtBox.TabIndex = 5;
             // 
-            // label1
+            // lblMeses
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Meses:";
+            this.lblMeses.AutoSize = true;
+            this.lblMeses.Location = new System.Drawing.Point(12, 126);
+            this.lblMeses.Name = "lblMeses";
+            this.lblMeses.Size = new System.Drawing.Size(41, 13);
+            this.lblMeses.TabIndex = 10;
+            this.lblMeses.Text = "Meses:";
             // 
             // chkCasillero
             // 
@@ -225,6 +225,7 @@
             this.Limpiar.TabIndex = 18;
             this.Limpiar.Text = "Limpiar";
             this.Limpiar.UseVisualStyleBackColor = true;
+            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // grpPago
             // 
@@ -249,9 +250,9 @@
             this.Controls.Add(this.lblCuotas);
             this.Controls.Add(this.cboCuotas);
             this.Controls.Add(this.chkCasillero);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMeses);
             this.Controls.Add(this.txtBox);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTurno);
             this.Controls.Add(this.lblPlan);
             this.Controls.Add(this.cboTurno);
             this.Controls.Add(this.cboPlan);
@@ -283,9 +284,9 @@
         private System.Windows.Forms.ComboBox cboPlan;
         private System.Windows.Forms.ComboBox cboTurno;
         private System.Windows.Forms.Label lblPlan;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTurno;
         private System.Windows.Forms.TextBox txtBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMeses;
         private System.Windows.Forms.CheckBox chkCasillero;
         private System.Windows.Forms.RadioButton rbtEfectivo;
         private System.Windows.Forms.RadioButton rbtTarjeta;
