@@ -193,6 +193,7 @@
             this.rbtTarjeta.TabStop = true;
             this.rbtTarjeta.Text = "Tarjeta";
             this.rbtTarjeta.UseVisualStyleBackColor = true;
+            this.rbtTarjeta.CheckedChanged += new System.EventHandler(this.rbtTarjeta_CheckedChanged);
             // 
             // cboCuotas
             // 
@@ -252,7 +253,7 @@
             this.AcceptButton = this.btnCalcular;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 372);
+            this.ClientSize = new System.Drawing.Size(339, 281);
             this.Controls.Add(this.grpPago);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCalcular);

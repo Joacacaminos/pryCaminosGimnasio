@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
@@ -33,6 +34,7 @@ namespace pryCaminosGimnasio
         const decimal Desc_Efectivo = 0.10m;
         const decimal Recargo_3_Cuotas = 0.10m;
         const decimal Recargo_6_Cuotas = 0.20m;
+        const decimal Recargo_1_Cuotas = 0m;
 
         public frmInscripcion()
         {
@@ -158,8 +160,37 @@ namespace pryCaminosGimnasio
                 }
             }
             total = subtotal - (subtotal * porcdescuento);
-           // MessageBox.Show(subtotal + "-" + porcdescuento + "-" + total);
-        }   
+            //MessageBox.Show(subtotal + "-" + porcdescuento + "-" + total);
+            int cuotas = 0;
+           if (rbtEfectivo.Checked)
+            {
+                porcAjustePago = -Desc_Efectivo; 
+            }
+           else
+            {
+                 cuotas = int.Parse(cboCuotas.Text);
+                if (cuotas ==1)
+                {
+                    porcAjustePago = Recargo_1_Cuotas;
+                }
+                else if (cuotas == 3)
+                {
+                    porcAjustePago = Recargo_3_Cuotas;
+                }
+                else if (cuotas == 6)
+                {
+                    porcAjustePago = Recargo_6_Cuotas;
+                }
+
+            }
+            total = total + (total * porcAjustePago);
+            //MessageBox.Show(total.ToString());
+            string categoria = Edad < Edad_Menor ? "Menor" : "Mayor";
+            string FormaPago = rbtEfectivo.Checked ? "Efectivo" : "Tarjeta en " + cuotas + "cuotas";
+            valorCuota = rbtEfectivo.Checked ? total : total / cuotas;
+            MessageBox.Show(categoria + " - " + FormaPago + " - " + total + valorCuota);
+        }  
+
 
 
         private void SoloDígitos_KeyPress(object sender, KeyPressEventArgs e)
@@ -187,6 +218,20 @@ namespace pryCaminosGimnasio
             else
             {
                 btnCalcular.Enabled = false;
+            }
+        }
+
+        private void rbtTarjeta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtTarjeta.Checked)
+            {
+                cboCuotas.Enabled = true;
+                cboCuotas.SelectedIndex = 0;
+            }
+            else
+            {
+                cboCuotas.Enabled = false;
+                cboCuotas.SelectedIndex = -1;
             }
         }
     }
