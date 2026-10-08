@@ -37,7 +37,7 @@
             this.cboTurno = new System.Windows.Forms.ComboBox();
             this.lblPlan = new System.Windows.Forms.Label();
             this.lblTurno = new System.Windows.Forms.Label();
-            this.txtBox = new System.Windows.Forms.TextBox();
+            this.txtMeses = new System.Windows.Forms.TextBox();
             this.lblMeses = new System.Windows.Forms.Label();
             this.chkCasillero = new System.Windows.Forms.CheckBox();
             this.rbtEfectivo = new System.Windows.Forms.RadioButton();
@@ -45,7 +45,7 @@
             this.cboCuotas = new System.Windows.Forms.ComboBox();
             this.lblCuotas = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
-            this.Limpiar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpPago = new System.Windows.Forms.GroupBox();
             this.grpPago.SuspendLayout();
             this.SuspendLayout();
@@ -53,16 +53,22 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(65, 36);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtEdad
             // 
             this.txtEdad.Location = new System.Drawing.Point(212, 36);
+            this.txtEdad.MaxLength = 3;
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(100, 20);
             this.txtEdad.TabIndex = 1;
+            this.txtEdad.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloDígitos_KeyPress);
             // 
             // lblNombre
             // 
@@ -137,13 +143,15 @@
             this.lblTurno.TabIndex = 8;
             this.lblTurno.Text = "Turno:";
             // 
-            // txtBox
+            // txtMeses
             // 
-            this.txtBox.Location = new System.Drawing.Point(59, 122);
-            this.txtBox.MaxLength = 2;
-            this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(44, 20);
-            this.txtBox.TabIndex = 5;
+            this.txtMeses.Location = new System.Drawing.Point(59, 122);
+            this.txtMeses.MaxLength = 2;
+            this.txtMeses.Name = "txtMeses";
+            this.txtMeses.Size = new System.Drawing.Size(44, 20);
+            this.txtMeses.TabIndex = 5;
+            this.txtMeses.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtMeses.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloDígitos_KeyPress);
             // 
             // lblMeses
             // 
@@ -159,9 +167,9 @@
             this.chkCasillero.AutoSize = true;
             this.chkCasillero.Location = new System.Drawing.Point(109, 124);
             this.chkCasillero.Name = "chkCasillero";
-            this.chkCasillero.Size = new System.Drawing.Size(86, 17);
+            this.chkCasillero.Size = new System.Drawing.Size(131, 17);
             this.chkCasillero.TabIndex = 6;
-            this.chkCasillero.Text = "$ 3.000/mes";
+            this.chkCasillero.Text = "Casillero($ 3.000/mes)";
             this.chkCasillero.UseVisualStyleBackColor = true;
             // 
             // rbtEfectivo
@@ -214,18 +222,19 @@
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(75, 23);
             this.btnCalcular.TabIndex = 9;
-            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.Text = "&Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
-            // Limpiar
+            // btnLimpiar
             // 
-            this.Limpiar.Location = new System.Drawing.Point(174, 238);
-            this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(75, 23);
-            this.Limpiar.TabIndex = 18;
-            this.Limpiar.Text = "Limpiar";
-            this.Limpiar.UseVisualStyleBackColor = true;
-            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
+            this.btnLimpiar.Location = new System.Drawing.Point(174, 238);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 18;
+            this.btnLimpiar.Text = "&Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // grpPago
             // 
@@ -243,15 +252,15 @@
             this.AcceptButton = this.btnCalcular;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 277);
+            this.ClientSize = new System.Drawing.Size(337, 372);
             this.Controls.Add(this.grpPago);
-            this.Controls.Add(this.Limpiar);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.lblCuotas);
             this.Controls.Add(this.cboCuotas);
             this.Controls.Add(this.chkCasillero);
             this.Controls.Add(this.lblMeses);
-            this.Controls.Add(this.txtBox);
+            this.Controls.Add(this.txtMeses);
             this.Controls.Add(this.lblTurno);
             this.Controls.Add(this.lblPlan);
             this.Controls.Add(this.cboTurno);
@@ -265,7 +274,7 @@
             this.MaximizeBox = false;
             this.Name = "frmInscripcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gimnsaio Siglo - Inscripcion ";
+            this.Text = "Gimnasio Siglo - Inscripción ";
             this.Load += new System.EventHandler(this.FrmInscripcion_Load);
             this.grpPago.ResumeLayout(false);
             this.grpPago.PerformLayout();
@@ -285,7 +294,7 @@
         private System.Windows.Forms.ComboBox cboTurno;
         private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.Label lblTurno;
-        private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.TextBox txtMeses;
         private System.Windows.Forms.Label lblMeses;
         private System.Windows.Forms.CheckBox chkCasillero;
         private System.Windows.Forms.RadioButton rbtEfectivo;
@@ -293,7 +302,7 @@
         private System.Windows.Forms.ComboBox cboCuotas;
         private System.Windows.Forms.Label lblCuotas;
         private System.Windows.Forms.Button btnCalcular;
-        private System.Windows.Forms.Button Limpiar;
+        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpPago;
     }
 }
