@@ -36,6 +36,21 @@ namespace pryCaminosGimnasio
         const decimal Recargo_6_Cuotas = 0.20m;
         const decimal Recargo_1_Cuotas = 0m;
 
+        //Socio
+        struct Socio
+        {
+            public string Nombre;
+            public int Edad;
+            public string categoria;
+            public string plan;
+            public string horario;
+            public int meses;
+            public string formaPago;
+            public decimal total;
+            public decimal valorCuota;
+            
+        }
+
         public frmInscripcion()
         {
             InitializeComponent();
@@ -188,7 +203,32 @@ namespace pryCaminosGimnasio
             string categoria = Edad < Edad_Menor ? "Menor" : "Mayor";
             string FormaPago = rbtEfectivo.Checked ? "Efectivo" : "Tarjeta en " + cuotas + "cuotas";
             valorCuota = rbtEfectivo.Checked ? total : total / cuotas;
-            MessageBox.Show(categoria + " - " + FormaPago + " - " + total + valorCuota);
+            //MessageBox.Show(categoria + " - " + FormaPago + " - " + total + valorCuota);
+
+            Socio socio;
+            socio.Nombre = nombre;
+            socio.Edad = Edad;
+            socio.categoria = categoria;
+            socio.plan = PLAN;
+            socio.horario = horario;
+            socio.meses = Meses;
+            socio.formaPago = FormaPago;
+            socio.total = total;
+            socio.valorCuota = valorCuota;
+
+            string mensaje = "Socio: " + socio.Nombre + "\n" +
+                "Edad: " + socio.Edad + " (" + socio.categoria + ")\n" +
+                "Plan: " + socio.plan + "\n" +
+                "Horario: " + socio.horario + "\n" +
+                "Meses: " + socio.meses + "\n" +
+                "Forma de Pago: " + socio.formaPago + "\n" + 
+                "Total: " + socio.total.ToString("C") + "\n" +
+                "Valor de Cuota: " + socio.valorCuota.ToString("C");
+
+            MessageBox.Show(mensaje, "Detalle de Inscripcion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            EstadoInicial();
         }  
 
 
