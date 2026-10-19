@@ -50,6 +50,8 @@ namespace pryCaminosGimnasio
             public decimal valorCuota;
             
         }
+        String[] vecSocio = new String[3];
+        int indice = 0;
 
         public frmInscripcion()
         {
@@ -216,6 +218,16 @@ namespace pryCaminosGimnasio
             socio.total = total;
             socio.valorCuota = valorCuota;
 
+            if (indice < vecSocio.Length)
+            {
+                vecSocio[indice] = socio.Nombre + " - " + socio.Edad + " - " + socio.categoria + " - " + socio.plan + " - " + socio.horario + " - " + socio.meses + " - " + socio.formaPago + " - " + socio.total + " - " + socio.valorCuota;
+                indice++;
+            }
+            else
+            {
+                MessageBox.Show("Se ha alcanzado el límite de socios registrados (Maximo 3).");
+            }
+
             string mensaje = "Socio: " + socio.Nombre + "\n" +
                 "Edad: " + socio.Edad + " (" + socio.categoria + ")\n" +
                 "Plan: " + socio.plan + "\n" +
@@ -273,6 +285,21 @@ namespace pryCaminosGimnasio
                 cboCuotas.Enabled = false;
                 cboCuotas.SelectedIndex = -1;
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (indice == 0)
+            {
+                MessageBox.Show("No hay socios registrados.");
+                return;
+            }
+            string listado = "";
+            for (int i = 0; i < indice; i++)
+            {
+                listado += vecSocio[i] + "\n";
+            }
+            MessageBox.Show(listado, "Listado de Socios", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

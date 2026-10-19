@@ -47,6 +47,7 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpPago = new System.Windows.Forms.GroupBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.grpPago.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,12 +249,23 @@
             this.grpPago.TabStop = false;
             this.grpPago.Text = "Forma de pago";
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(120, 267);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultar.TabIndex = 19;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // frmInscripcion
             // 
             this.AcceptButton = this.btnCalcular;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 281);
+            this.ClientSize = new System.Drawing.Size(339, 355);
+            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.grpPago);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCalcular);
@@ -305,6 +317,7 @@
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox grpPago;
+        private System.Windows.Forms.Button btnConsultar;
     }
 }
 
